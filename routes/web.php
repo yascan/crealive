@@ -37,5 +37,11 @@ Route::group([
             Route::post('update/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('update');
             Route::get('delete/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('delete');
         });
+        Route::group([
+            'prefix' => 'article',
+            'as' => 'article.'
+        ], function (){
+            Route::get('/', [\App\Http\Controllers\Admin\ArticleController::class, 'index'])->name('list');
+        });
     });
 });
