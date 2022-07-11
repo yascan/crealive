@@ -42,6 +42,8 @@ Route::group([
             'as' => 'article.'
         ], function (){
             Route::get('/', [\App\Http\Controllers\Admin\ArticleController::class, 'index'])->name('list');
+            Route::get('create', [\App\Http\Controllers\Admin\ArticleController::class, 'create'])->name('create');
+            Route::get('store', [\App\Http\Controllers\Admin\ArticleController::class, 'store'])->name('store');
         });
     });
 });
