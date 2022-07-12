@@ -43,7 +43,8 @@ Route::group([
         ], function (){
             Route::get('/', [\App\Http\Controllers\Admin\ArticleController::class, 'index'])->name('list');
             Route::get('create', [\App\Http\Controllers\Admin\ArticleController::class, 'create'])->name('create');
-            Route::get('store', [\App\Http\Controllers\Admin\ArticleController::class, 'store'])->name('store');
+            Route::post('store', [\App\Http\Controllers\Admin\ArticleController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [\App\Http\Controllers\Admin\ArticleController::class, 'edit'])->name('edit');
         });
     });
 });

@@ -16,7 +16,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="{{route('admin.article.store')}}" method="post">
+                        <form action="{{route('')}}" method="post">
                             @csrf
                             <label class="form-label">Kategori</label>
                             <div class="mb-3 overflow-scroll">
