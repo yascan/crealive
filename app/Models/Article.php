@@ -17,4 +17,8 @@ class Article extends Model
         'seo_title',
         'seo_description',
     ];
+
+    public function articleCategory(){
+        return $this->belongsToMany(Category::class, 'article_category', 'article_id', 'category_id');
+    }
 }

@@ -24,7 +24,9 @@ class ArticleController extends Controller
     public function store(AdminArticleRequest $request){
         $request['slug'] = Str::slug($request->title);
         $request['user_id'] = Auth::id();
-        if (Article::create($request->only(['title', 'post', 'slug', 'user_id', 'seo_title', 'seo_description']))){
+        $article = Article::create($request->only(['title', 'post', 'slug', 'user_id', 'seo_title', 'seo_description']));
+        if ($article){
+            $article->articleCategory()->sync($request->input('categories'));
             return redirect()->route('admin.article.list');
         }
         return back()->withErrors(['error' => 'Kayıt işlemi sırasında hata oluştu'])->onlyInput('title','post', 'seo_title', 'seo_description');
@@ -35,4 +37,5 @@ class ArticleController extends Controller
         $article = Article::find($id);
         return view('admin.article.update', compact('article', 'categories'));
     }
+
 }
